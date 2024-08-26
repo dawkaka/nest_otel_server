@@ -20,12 +20,10 @@ const resource = new Resource(defaultAttributes);
 
 const logExporter = new OTLPLogExporter({
   url: 'http://localhost:4317', //grpc endpoint
-  timeoutMillis: 10000,
 });
 
 const traceExporter = new OTLPTraceExporter({
   url: 'http://localhost:4317', // grpc endpoint
-  timeoutMillis: 10000,
 });
 
 export const sdk = new NodeSDK({
