@@ -18,11 +18,6 @@ async function bootstrap() {
     AppModule,
     new FastifyAdapter(fastify as any),
   );
-  // const apitoolkitClient = APIToolkit.NewClient({
-  //   apiKey: '<API_KEY>',
-  //   fastify,
-  // });
-  // apitoolkitClient.init();
 
   // Register the exceptions filter as a global filter
   app.useGlobalFilters(new AllExceptionsFilter());

@@ -14,21 +14,17 @@ const defaultAttributes = {
   [SemanticResourceAttributes.SERVICE_VERSION]: '1.0.0',
   environment: 'production',
   'at-project-id': '00000000-0000-0000-0000-000000000000',
+  'at-project-key': 'kKMdJZdMPikzn91K0qZsTzsc9DjBSYCe6bjp0b9fojtT9Y3C'
 };
 
 const resource = new Resource(defaultAttributes);
 
 const logExporter = new OTLPLogExporter({
-  url: 'http://localhost:4317', //grpc endpoint
-});
-
-const traceExporter = new OTLPTraceExporter({
-  url: 'http://localhost:4317', // grpc endpoint
+  url: 'http://otelcol.apitoolkit.io:4317', //grpc endpoint
 });
 
 export const sdk = new NodeSDK({
   resource: resource,
   instrumentations: [getNodeAutoInstrumentations()],
-  logRecordProcessor: new logs.SimpleLogRecordProcessor(logExporter),
-  traceExporter,
+  logRecordProcessor: new logs.BatchLogRecordProcessor(logExporter),
 });
