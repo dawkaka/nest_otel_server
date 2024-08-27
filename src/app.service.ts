@@ -1,6 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { trace } from '@opentelemetry/api';
 import { logs } from '@opentelemetry/api-logs';
+
 @Injectable()
 export class AppService {
   private readonly logger = new Logger(AppService.name);
@@ -13,7 +14,7 @@ export class AppService {
 
     const otelLogger = logs.getLogger('example-logger');
     otelLogger.emit({
-      body: 'This is an OpenTelemetry log message',
+      body: 'Blockradar log message',
       attributes: { method: 'getHello' },
       severityText: 'INFO',
     });
